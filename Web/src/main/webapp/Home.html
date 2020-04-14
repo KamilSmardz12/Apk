@@ -1,0 +1,56 @@
+<html lang="pl">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Main page </title>
+    <link href="home/css/bootstrap.css" rel="stylesheet"/>
+    <link href="home/css/coming-sssoon.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<nav class="navbar navbar-transparent navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="Home.html">
+                        Main page
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="align-items-center d-flex photo-overlay py-5 cover"></div>
+<div class="main" style="background-image: url('home/images/222.jpg')">
+    <div class="cover black" data-color="black"></div>
+    <div class="container">
+        <h1 class="logo cursive">Wybierz aplikację</h1>
+        <div class="content">
+            <h4 class="motto">Sprawdź warunki pogodowe w Twojej lokalizacji, lub znajdź 10 najbliższych trzęsień
+                Ziemi </h4>
+            <div class="subscribe">
+                <h5 class="info-text"></h5>
+                <div class="row">
+                    <form class="p-4 bg-dark-opaque" method="post" action="/AdminServlet" style="">
+                        <div class="col-md-5 col-md-offset-2 col-sm6-6 col-sm-offset-3 ">
+                                <button type="submit" name="btWeather" href="homeWeather.html" class="btn btn-warning  btn-lg">Sprawdź pogodę</button>
+                        </div>
+                        <button type="submit" name="btEarthquakes" href="/mapS" class="btn btn-warning  btn-lg"><b>Trzesienia Ziemi</b></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        K.S.
+    </div>
+</div>
+</body>
+</html>

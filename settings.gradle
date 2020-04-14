@@ -1,0 +1,5 @@
+rootProject.name = 'Apk'
+include 'Web'
+include 'Weather'
+include 'Earthquakes'
+

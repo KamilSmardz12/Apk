@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/Earthquakes/build/
+/Earthquakes/build/classes/java/main/
+/Web/build/
