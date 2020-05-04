@@ -1,8 +1,9 @@
 package servlets;
 
-import Model.Location;
-import Service.WeatherData;
-import Service.WeatherServiceFacatory;
+import model.Location;
+import service.WeatherData;
+import service.WeatherService;
+import service.WeatherServiceFacatory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,34 +13,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static service.Constants.*;
+
 @WebServlet(urlPatterns = "/DisplayWeather")
 public class DisplayWeather extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String city = request.getParameter("city");
-        String country = request.getParameter("country");
+        WeatherService service = WeatherServiceFacatory.getWeatherDataService();
+        WeatherData data = service.getWeatherData(
+                new Location(
+                        request.getParameter(CITY.getValue()),
+                        request.getParameter(COUNTRY.getValue())
+                )
+        );
 
-        IWeatherService service = WeatherServiceFacatory.getWeatherDataService("OPEN");
-        WeatherData data = service.getWeatherData(new Location(city, country));
+        setAtrubutes(request, data);
 
+        RequestDispatcher dispatcher = request.getRequestDispatcher("wd.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void setAtrubutes(HttpServletRequest request, WeatherData data) {
+        String city = request.getParameter(CITY.getValue());
+        String country = request.getParameter(COUNTRY.getValue());
         String humidity = data.getHumidity().getValue() + data.getHumidity().getUnit();
         String pressure = data.getPressure().getValue() + data.getPressure().getUnit();
         String temperature = data.getTemperature().getValue() + "°C";
         String lastUpdate = data.getLastUpdate().getValue();
 
-        request.setAttribute("city", city);
-        request.setAttribute("country", country);
-        request.setAttribute("humidity", humidity);
-        request.setAttribute("pressure", pressure);
-        request.setAttribute("temperature", temperature);
-        request.setAttribute("lastUpdate", lastUpdate);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("wd.jsp");
-        dispatcher.forward(request, response);
+        request.setAttribute(CITY.getValue(), city);
+        request.setAttribute(COUNTRY.getValue(), country);
+        request.setAttribute(HUMIDITY.getValue(), humidity);
+        request.setAttribute(PRESSURE.getValue(), pressure);
+        request.setAttribute(TEMPERATURE.getValue(), temperature);
+        request.setAttribute(LAST_UPDATE.getValue(), lastUpdate);
     }
 }
 

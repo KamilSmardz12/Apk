@@ -1,7 +1,7 @@
 package servlets;
 
-import Earthquakes.controller.Controller;
-import Earthquakes.domain.Results;
+import controller.Controller;
+import domain.Results;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
